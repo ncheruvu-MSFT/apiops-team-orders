@@ -4,6 +4,7 @@
     REAL extracted baseline (not hand-authored) -- fixed servers[]/paths schema to match what the
     real Azure/apiops extractor produces (API path segment belongs in servers[].url, paths are
     relative to it) -- this was the root cause of operations/subscriptions not publishing before.
+    (Retry: re-trigger publish now that .spectral.yaml matches the real schema.)
 -->
 <policies>
     <inbound>
