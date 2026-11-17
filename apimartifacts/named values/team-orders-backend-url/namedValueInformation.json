@@ -3,7 +3,7 @@
     "displayName": "team-orders-backend-url",
     "secret": false,
     "tags": [
-      "team:orders"
+      "team.orders"
     ],
     "value": "https://orders-backend.internal.contoso.com"
   }

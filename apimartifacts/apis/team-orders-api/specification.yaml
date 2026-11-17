@@ -1,32 +1,35 @@
 openapi: 3.0.1
 info:
   title: Team Orders API
-  description: Order creation, status, and cancellation. Owned by Team Orders.
+  description: 'Team Orders API -- order creation, status, and cancellation. Owned by Team Orders.'
   version: '1.0'
 servers:
-  - url: https://apim-y3ownlt7uuuqu.azure-api.net
+  - url: https://apim-y3ownlt7uuuqu.azure-api.net/team-orders
 paths:
-  /team-orders/status:
+  /status:
     get:
       summary: Get order status
-      description: Returns the current status of an order (published by Team Orders' GitHub Actions pipeline)
       operationId: get-order-status
       responses:
         '200':
-          description: OK
-  /team-orders:
+          description: ''
+  /:
     post:
       summary: Create order
-      description: Creates a new order
       operationId: create-order
       responses:
-        '201':
-          description: Created
+        '200':
+          description: ''
 components:
   securitySchemes:
     apiKeyHeader:
       type: apiKey
       name: Ocp-Apim-Subscription-Key
       in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
 security:
-  - apiKeyHeader: []
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]
