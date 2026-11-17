@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "path": "team-orders",
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "Team Orders API -- order creation, status, and cancellation. Owned by Team Orders.",
+    "displayName": "Team Orders API",
+    "isCurrent": true,
+    "protocols": [
+      "https"
+    ],
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": true
+  }
+}

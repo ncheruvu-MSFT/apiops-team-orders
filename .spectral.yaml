@@ -1,0 +1,33 @@
+# Spectral ruleset enforcing Team Orders' naming convention. This is a REAL blocking gate in
+# run-publisher.yml (not `|| true` like the generic APIOps starter kit's lint step).
+extends: []
+rules:
+  team-prefixed-paths:
+    description: 'All paths must be scoped under /team-orders (NAMING-CONVENTIONS.md)'
+    message: "Path '{{property}}' must start with /team-orders -- this repo only owns Team Orders' API surface"
+    severity: error
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/team-orders"
+
+  operation-id-kebab-case:
+    description: 'operationId must be kebab-case: <verb>-<resource>[-<detail>]'
+    message: "operationId '{{value}}' must be kebab-case, e.g. get-order-status"
+    severity: error
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-z0-9]*(-[a-z0-9]+)*$"
+
+  title-must-match-team:
+    description: 'info.title must match the API display name convention'
+    message: "info.title '{{value}}' must start with 'Team Orders'"
+    severity: error
+    given: "$.info.title"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Team Orders"

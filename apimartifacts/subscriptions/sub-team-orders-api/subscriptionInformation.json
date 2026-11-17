@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "displayName": "sub-team-orders-api",
+    "scope": "/apis/team-orders-api",
+    "allowTracing": true,
+    "state": "active"
+  }
+}

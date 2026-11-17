@@ -1,0 +1,8 @@
+# APIOps extractor filter -- Team Orders repo.
+# Scopes extraction to ONLY this team's API. Other resource types (named values, policy
+# fragments, products) are omitted here and therefore default to "include all" per apiops-cli
+# docs -- intentionally, since those may include platform-shared resources this team should still
+# be able to READ. Deletion of anything outside this team's ownership is blocked at the RBAC layer
+# regardless of what this filter includes or omits.
+apis:
+  - team-orders-api
