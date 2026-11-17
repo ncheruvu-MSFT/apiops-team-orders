@@ -1,6 +1,7 @@
 <!--
     Team Orders API policy. Managed exclusively by the apiops-team-orders repo.
     Published by: id-apiops-team-orders managed identity via GitHub Actions OIDC.
+    (Retry commit after initial run did not reflect in Azure.)
 -->
 <policies>
     <inbound>
