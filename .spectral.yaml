@@ -1,16 +1,21 @@
 # Spectral ruleset enforcing Team Orders' naming convention. This is a REAL blocking gate in
 # run-publisher.yml (not `|| true` like the generic APIOps starter kit's lint step).
+#
+# NOTE: updated to check servers[0].url rather than individual paths -- the real Azure/apiops
+# extractor nests the API's own path segment into servers[0].url and makes `paths` relative to it
+# (e.g. servers: [.../team-orders], paths: { /status: ... }). Checking paths for a /team-orders
+# prefix would incorrectly fail every legitimately-extracted spec.
 extends: []
 rules:
-  team-prefixed-paths:
-    description: 'All paths must be scoped under /team-orders (NAMING-CONVENTIONS.md)'
-    message: "Path '{{property}}' must start with /team-orders -- this repo only owns Team Orders' API surface"
+  team-scoped-server-url:
+    description: 'servers[0].url must be scoped under .../team-orders (NAMING-CONVENTIONS.md)'
+    message: "servers[0].url '{{value}}' must end with /team-orders -- this repo only owns Team Orders' API surface"
     severity: error
-    given: "$.paths[*]~"
+    given: "$.servers[0].url"
     then:
       function: pattern
       functionOptions:
-        match: "^/team-orders"
+        match: "/team-orders$"
 
   operation-id-kebab-case:
     description: 'operationId must be kebab-case: <verb>-<resource>[-<detail>]'
