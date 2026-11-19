@@ -4,7 +4,7 @@ info:
   description: 'Team Orders API -- order creation, status, and cancellation. Owned by Team Orders.'
   version: '1.0'
 servers:
-  - url: https://apim-y3ownlt7uuuqu.azure-api.net/team-orders
+  - url: https://<APIM_SERVICE_NAME>.azure-api.net/team-orders
 paths:
   /status:
     get:
